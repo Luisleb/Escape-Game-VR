@@ -13,11 +13,15 @@ public class Sandclock : MonoBehaviour
     void Start()
     {
         hourglass.isKinematic = true;
+
     }
 
     // Update is called once per frame
     public void OnPlayerGrabbed(SelectEnterEventArgs args)
     {
+
+
         hourglass.isKinematic = false;
     }
+
 }
