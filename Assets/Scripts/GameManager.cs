@@ -72,5 +72,11 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
             }
         }
         boat.GetComponent<Animator>().SetBool("boatComing", false);
+        StartCoroutine(EndScreen());
+    }
+    private IEnumerator EndScreen()
+    {
+        yield return new WaitForSeconds(3);
+        //appel ecran de fin
     }
 }
