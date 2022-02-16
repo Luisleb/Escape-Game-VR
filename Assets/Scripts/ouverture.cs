@@ -22,7 +22,7 @@ public class ouverture : MonoBehaviour
         if (collision.gameObject.tag == "barel")
         {
             
-            gameObject.transform.Translate(Vector3.down);
+            gameObject.transform.Translate((Vector3.down/2)*Time.deltaTime);
             wall.GetComponent<Animator>().SetBool("isFalling",true);
         }
     }

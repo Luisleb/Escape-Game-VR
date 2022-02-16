@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviourSingleton<GameManager>
 {
@@ -19,22 +20,48 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
 
     bool hasspoken = false;
 
+    bool m_GameIsPaused =false;
+
+    [SerializeField]
+    private GameObject EndCanvas;
+
+    [SerializeField]
+    private GameObject lostCanvas;
+
     private void Start()
     {
         boat.SetActive(false);
         textmesh = CanvaUser.GetComponentInChildren<TextMeshProUGUI>();
     }
-    void StartTime()
+    public void StartTime()
     {
         bTimerStarted = true;
         beginTime = Time.time;
     }
-    float GetTime()
+    public float GetTime()
     {
         return Time.time - beginTime;
     }
+    public void EndGame()
+    {
+        if (Time.time-beginTime == 10)
+        {
+            lostCanvas.SetActive(true);
+            bTimerStarted=false;
+            m_GameIsPaused = !m_GameIsPaused;
+            Time.timeScale = m_GameIsPaused ? 0f : 1f;
 
+<<<<<<< Updated upstream
     public IEnumerator Say(string phrase, float TimeAfterDialog=5f)
+=======
+        }
+    }
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+    public IEnumerator Say(string phrase)
+>>>>>>> Stashed changes
     {
         textmesh.text = "";
         for (int i = 0; i < phrase.Length; i++)
