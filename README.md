@@ -1,3 +1,4 @@
+# README Projet VR Escape Game
 ## Notre escape game n'étant pas totalement fini nous vous conseillons donc pour le tester au mieux de suivre ces conseils:
 
 - *`optionnel`* Aller sur la scène menu qui malheureusement ne charge pas de scène quand on clique sur play.
