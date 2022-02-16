@@ -12,10 +12,16 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     TextMeshProUGUI textmesh;
     [SerializeField]
     Canvas CanvaUser;
+    [SerializeField]
+    GameObject boat;
+    [SerializeField]
+    GameObject XRGameObject;
+
     bool hasspoken = false;
 
     private void Start()
     {
+        boat.SetActive(false);
         textmesh = CanvaUser.GetComponentInChildren<TextMeshProUGUI>();
     }
     void StartTime()
@@ -28,7 +34,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         return Time.time - beginTime;
     }
 
-    public IEnumerator Say(string phrase)
+    public IEnumerator Say(string phrase, float TimeAfterDialog=5f)
     {
         textmesh.text = "";
         for (int i = 0; i < phrase.Length; i++)
@@ -37,14 +43,34 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
             //if (phrase[i]!=' ')
             yield return new WaitForSeconds(.01f);
         }
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(TimeAfterDialog);
         textmesh.text = "";
     }
-    /*private IEnumerator ClipCanvaUser()
+    public void BoatArriving()
     {
-        while (true)
+        boat.SetActive(true);
+        boat.GetComponent<Animator>().SetBool("boatComing", true);
+    }
+    public void BoatLanding()
+    {
+        Debug.Log("Boat landing");
+        //set parent XROrigin
+        Transform[] enfants= XRGameObject.GetComponentsInChildren<Transform>();
+        for (int i = 0;i < enfants.Length;i++)
         {
-            yield return new WaitForSeconds(1f);
+            //Parentage XROrigin
+            if (enfants[i].name.Equals("XR Origin"))
+            {
+                enfants[i].SetParent(boat.transform);
+                Debug.Log(enfants[i] + "is a XROrigin");
+            }
+            //Désactivation XRLocomotion
+            else if (enfants[i].name.Equals("Locomotion System"))
+            {
+                enfants[i].gameObject.SetActive(false);
+                Debug.Log(enfants[i] + "Locomotion System");
+            }
         }
-    }*/
+        boat.GetComponent<Animator>().SetBool("boatComing", false);
+    }
 }

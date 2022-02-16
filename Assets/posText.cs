@@ -5,8 +5,7 @@ using TMPro;
 
 public class posText : MonoBehaviour
 {
-    Canvas canva;
-    TextMeshProUGUI text;
+    
     
     // Start is called before the first frame update
     void Start()

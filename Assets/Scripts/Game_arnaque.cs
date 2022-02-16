@@ -18,6 +18,7 @@ public class Game_arnaque : MonoBehaviour
 
     private void Start()
     {
+        Key.GetComponent<XRGrabInteractable>().enabled = false;
         Instructions.SetActive(false);
         gameObject.transform.parent.gameObject.SetActive(false);
     }

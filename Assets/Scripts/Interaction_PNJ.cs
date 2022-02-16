@@ -18,7 +18,7 @@ public class Interaction_PNJ : MonoBehaviour
         {
             textmesh = CanvaUser.GetComponentInChildren<TextMeshProUGUI>();
             hasspoken = true;
-            StartCoroutine(GameManager.Instance.Say("Bonjour visiteur, voulez-vous jouer à un jeu ?"));
+            StartCoroutine(GameManager.Instance.Say("Bonjour visiteur, voulez-vous jouer à un jeu ?", 5f));
             game.SetActive(true);
         }
     }

@@ -8,6 +8,7 @@ public class LightTorch : MonoBehaviour
     [SerializeField] public bool lighted;
     private void Start()
     {
+        GameManager.Instance.BoatArriving();
         if (!lighted)
             flames.SetActive(false);
         else
@@ -26,6 +27,7 @@ public class LightTorch : MonoBehaviour
                 if (transform.name.Equals("fireplace"))
                 {
                     //faire arriver le bateau
+                    GameManager.Instance.BoatArriving();
                     StartCoroutine(GameManager.Instance.Say("Bateau en vue !"));
                 }
             }
