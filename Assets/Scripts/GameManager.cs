@@ -44,24 +44,19 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     }
     public void EndGame()
     {
-        if (Time.time-beginTime == 10)
+        if (Time.time - beginTime == 10)
         {
             lostCanvas.SetActive(true);
-            bTimerStarted=false;
+            bTimerStarted = false;
             m_GameIsPaused = !m_GameIsPaused;
             Time.timeScale = m_GameIsPaused ? 0f : 1f;
-
-<<<<<<< Updated upstream
-    public IEnumerator Say(string phrase, float TimeAfterDialog=5f)
-=======
         }
     }
     public void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
-    public IEnumerator Say(string phrase)
->>>>>>> Stashed changes
+    public IEnumerator Say(string phrase, float TimeAfterDialog=5f)
     {
         textmesh.text = "";
         for (int i = 0; i < phrase.Length; i++)
